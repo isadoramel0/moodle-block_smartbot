@@ -53,7 +53,7 @@ class block_smartbot extends block_base {
         }
 
         $this->content = new stdClass();
-        $this->content->text = get_string('worked', 'block_smartbot');
+        $this->content->text = get_string('block_description', 'block_smartbot');
         $this->content->footer = '';
 
         return $this->content;

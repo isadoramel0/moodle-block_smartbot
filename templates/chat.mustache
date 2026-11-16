@@ -1,0 +1,106 @@
+{{!
+    @template block_smartbot/chat
+
+    Displays the floating SmartBot launcher and static chat window.
+
+    Example context (json):
+    {
+        "botname": "SmartBot",
+        "primarycolor": "#2C5279",
+        "primarycolordark": "#213e5b",
+        "subtitle": "Tira dúvidas sobre o Campus Virtual",
+        "openlabel": "Abrir conversa com o SmartBot",
+        "closelabel": "Fechar conversa",
+        "termslabel": "Termos de uso",
+        "welcomemessage": "Olá. Sou o SmartBot...",
+        "faqbutton": "Visualizar Perguntas Frequentes",
+        "frequenttitle": "Frequentes",
+        "questions": [{"text": "Como envio atividades?"}],
+        "demo_user_message": "Como posso enviar uma atividade?",
+        "demo_answer_intro": "Para enviar uma atividade:",
+        "demo_answer_topics": [{"text": "Acesse a disciplina e selecione a atividade."}],
+        "messageplaceholder": "Digite sua dúvida...",
+        "sendlabel": "Enviar mensagem",
+        "disclaimer": "Smartbot é uma IA e pode cometer erros."
+    }
+}}
+<div class="block_smartbot-widget {{iconpositionclass}}" data-block-smartbot
+    style="--block-smartbot-primary: {{primarycolor}}; --block-smartbot-primary-dark: {{primarycolordark}};">
+    <section class="block_smartbot-chat" id="block-smartbot-chat" role="dialog"
+        aria-label="{{botname}}" aria-modal="false" hidden>
+        <header class="block_smartbot-header">
+            <div class="block_smartbot-heading">
+                <h2 class="block_smartbot-title">{{botname}}</h2>
+                {{#subtitle}}
+                    <p class="block_smartbot-subtitle">{{subtitle}}</p>
+                {{/subtitle}}
+            </div>
+            <div class="block_smartbot-header-actions">
+                <span class="block_smartbot-terms-icon" role="img" title="{{termslabel}}"
+                    aria-label="{{termslabel}}">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                        <path d="M6 3.75h8l4 4v12.5H6z"></path>
+                        <path d="M14 3.75v4h4M9 12h6M9 15h6"></path>
+                    </svg>
+                </span>
+                <button class="block_smartbot-close" type="button" data-action="close"
+                    aria-label="{{closelabel}}">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                        <path d="m6 6 12 12M18 6 6 18"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="block_smartbot-messages">
+            <div class="block_smartbot-message block_smartbot-message--welcome">
+                {{welcomemessage}}
+            </div>
+
+            <div class="block_smartbot-faq-action">{{faqbutton}}</div>
+
+            <section class="block_smartbot-faq" aria-label="{{frequenttitle}}">
+                <h3 class="block_smartbot-section-title">{{frequenttitle}}</h3>
+                <div class="block_smartbot-question-list">
+                    {{#questions}}
+                        <span class="block_smartbot-question">{{text}}</span>
+                    {{/questions}}
+                </div>
+            </section>
+
+            <div class="block_smartbot-message-row block_smartbot-message-row--user">
+                <div class="block_smartbot-message block_smartbot-message--user">
+                    {{demo_user_message}}
+                </div>
+            </div>
+
+            <div class="block_smartbot-message block_smartbot-message--reply">
+                <p class="block_smartbot-answer-intro">{{demo_answer_intro}}</p>
+                <ul class="block_smartbot-answer-list">
+                    {{#demo_answer_topics}}
+                        <li>{{text}}</li>
+                    {{/demo_answer_topics}}
+                </ul>
+            </div>
+        </div>
+
+        <footer class="block_smartbot-footer">
+            <div class="block_smartbot-composer">
+                <input class="block_smartbot-input" type="text" placeholder="{{messageplaceholder}}"
+                    aria-label="{{messageplaceholder}}" readonly>
+                <span class="block_smartbot-send" role="img" aria-label="{{sendlabel}}">&gt;</span>
+            </div>
+            <p class="block_smartbot-disclaimer">{{disclaimer}}</p>
+        </footer>
+    </section>
+
+    <button class="block_smartbot-launcher" type="button" data-action="open"
+        aria-label="{{openlabel}}" aria-haspopup="dialog" aria-expanded="false"
+        aria-controls="block-smartbot-chat">
+        <svg aria-hidden="true" viewBox="0 0 32 32" focusable="false">
+            <path d="m3 11 13-6 13 6-13 6z"></path>
+            <path d="M8 13v8c4.8 3.2 11.2 3.2 16 0v-8M29 11v9"></path>
+            <circle cx="29" cy="22" r="1.5"></circle>
+        </svg>
+    </button>
+</div>

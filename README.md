@@ -1,6 +1,8 @@
 # SmartBot (block_smartbot)
 
-Plugin de bloco para Moodle. Nesta versão inicial, o bloco exibe a frase "Funcionou".
+Plugin de bloco para Moodle que apresenta uma janela visual de conversa sobre o
+Campus Virtual da UFLA. A interface é apenas demonstrativa: não envia mensagens
+nem se integra a uma IA.
 
 ## Requisitos
 
@@ -33,13 +35,14 @@ sudo -u www-data php admin/cli/purge_caches.php
 ## Configuração
 
 Em **Administração do site > Plugins > Blocos > SmartBot** é possível definir o
-campo "Texto de boas-vindas".
+nome exibido no cabeçalho do chatbot.
 
 ## Uso
 
-1. Ative o modo de edição em uma página.
-2. Clique em **Adicionar um bloco** e escolha **SmartBot**.
-3. O bloco exibirá a frase "Funcionou".
+Para usuários autenticados, o botão flutuante do SmartBot aparece em todas as
+páginas do Moodle. Clique nele para abrir a janela visual do chat; o botão X
+fecha a janela. Adicionar o bloco a uma página exibe também uma breve
+apresentação do SmartBot.
 
 ## Licença
 
